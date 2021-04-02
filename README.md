@@ -1,14 +1,8 @@
 # Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+The U-Prove JavaScript SDK implements the client-side of the [U-Prove Cryptographic Specification](http://research.microsoft.com/apps/pubs/default.aspx?id=166969), and is a companion to the [U-Prove C# SDK](https://uprovecsharp.codeplex.com/). It can be used to write web clients interacting with U-Prove services. The SDK makes use of the [MSR JavaScript Cryptography Library](http://research.microsoft.com/en-us/downloads/29f9385d-da4c-479a-b2ea-2a7bb335d727/).
 
-As the maintainer of this project, please make a few updates:
-
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+For more information about the U-Prove technology, please visit http://www.microsoft.com/uprove.
 
 ## Contributing
 

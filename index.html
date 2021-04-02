@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+
+    <title>U-Prove Javascript Test Page</title>
+
+    <!-- MSR Crypto scripts -->
+    <script type="text/javascript" src="msrcrypto/global.js"></script>
+    <script type="text/javascript" src="msrcrypto/utilities.js"></script>
+    <script type="text/javascript" src="msrcrypto/cryptoMath.js"></script>
+    <script type="text/javascript" src="msrcrypto/cryptoECC.js"></script>
+    <script type="text/javascript" src="msrcrypto/sha256.js"></script>
+
+    <!-- U-Prove scripts -->
+    <script type="text/javascript" src="scripts/UProve.js"></script>
+    <script type="text/javascript" src="scripts/SubgroupL2048N256.js"></script>
+    <script type="text/javascript" src="scripts/EcP256.js"></script>
+
+    <!-- Test scripts -->
+    <script type="text/javascript" src="scripts/UProveTest.js"></script>
+
+    <!-- Page scripts -->
+    <script type="text/javascript">
+        "use strict";
+
+        // Catch errors and display them
+        window.onerror = function (message, url, linenumber) {
+            alert("JavaScript error: " + message + " on line " + linenumber + " for " + url);
+        }
+
+        // This delay (in milliseconds) allows the browser to redraw the page
+        var REDRAW_DELAY = 100;
+
+        // HASH TESTS ///////////////////////////////////////////////////////
+        function runHashTests() {
+            cryptoUProveTest.executeHashTests(perfResultsDiv);
+            setTimeout(hashTestsComplete, REDRAW_DELAY);
+        }
+
+        function hashTestsComplete() {
+            statusDiv.innerHTML = "U-Prove hashing tests completed";
+        }
+        // END HASH TESTS ///////////////////////////////////////////////////
+        
+        // U-PROVE TESTS ///////////////////////////////////////////////////////
+        function runUProveTests() {
+            cryptoUProveTest.executeUProveTests(perfResultsDiv, LiteCheckbox.checked, ECCCheckbox.checked);
+            setTimeout(uproveTestsComplete, REDRAW_DELAY);
+        }
+
+        function uproveTestsComplete() {
+            statusDiv.innerHTML = "U-Prove tests completed";
+        }
+        // END U-PROVE TESTS ///////////////////////////////////////////////////
+
+    </script>
+
+</head>
+
+<body>
+    <b>U-Prove Javascript Test Page</b>
+    <br />
+    <br />
+    <p>Run test vectors hash tests</p>
+    <button id="HashButton" onclick="runHashTests()">Run Hash Tests</button><br />
+    <hr />
+    <p>Run test vectors protocol tests. Select Lite for the lite protocol version. Select ECC to run the ECC version.</p>
+    <input id="LiteCheckbox" type="checkbox" /> Lite
+    <input id="ECCCheckbox" type="checkbox" /> ECC
+    <br />
+    <button id="UProveButton" onclick="runUProveTests()">Run U-Prove Tests</button><br />
+    <hr />
+    <b>Status</b>
+    <br />
+    <div id="statusDiv">Waiting for input</div>
+    <br />
+    <b>Performance Results</b>
+    <br />
+    <div id="perfResultsDiv">Not executed</div>
+</body>
+
+</html>
